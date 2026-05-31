@@ -1,4 +1,4 @@
-# subspace-product-teardown
+# Vocallabs
 Product teardown and UX recommendations for Subspace.money Product Intern Assignment
 # Subspace.money Product Teardown
 
