@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subspace Product Redesign Mockups</title>
+<style>
+:root{
+ --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+ --color-background-secondary:#111827;
+ --color-text-secondary:#9ca3af;
+ --color-border-secondary:#374151;
+ --color-border-tertiary:#4b5563;
+}
+body{
+ background:#0b0b12;
+ color:#fff;
+ font-family:var(--font-sans);
+ padding:24px;
+ max-width:1400px;
+ margin:0 auto;
+}
+.screen.active{display:block !important;}
+</style>
+</head>
+<body>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+.nav-tabs { display: flex; gap: 6px; flex-wrap: wrap; padding: 12px 0 16px; border-bottom: 0.5px solid var(--color-border-tertiary); margin-bottom: 20px; }
+.tab-btn { padding: 6px 14px; border-radius: 20px; border: 0.5px solid var(--color-border-secondary); background: var(--color-background-secondary); color: var(--color-text-secondary); font-size: 12px; cursor: pointer; font-family: var(--font-sans); }
+.tab-btn.active { background: #1a1a2e; color: #a78bfa; border-color: #6d28d9; }
+.screen { display: none; }
+.screen.active { display: block; }
+
+/* Subspace dark theme for mockups */
+.sb { background: #0d0d14; border-radius: 12px; overflow: hidden; border: 0.5px solid #2a2a3d; }
+.sb-nav { background: #0d0d14; border-bottom: 0.5px solid #1e1e2e; padding: 10px 20px; display: flex; align-items: center; gap: 16px; }
+.sb-logo { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: -0.5px; display: flex; align-items: center; gap: 4px; }
+.sb-logo span { color: #8b5cf6; }
+.sb-nav-links { display: flex; gap: 12px; margin-left: 16px; }
+.sb-nav-link { font-size: 11px; color: #888; padding: 4px 10px; border-radius: 12px; }
+.sb-nav-link.active { background: #1e1e2e; color: #fff; }
+.sb-search { margin-left: auto; background: #1a1a2e; border: 0.5px solid #2a2a3d; border-radius: 20px; padding: 4px 12px; font-size: 11px; color: #555; display: flex; align-items: center; gap: 6px; }
+.sb-content { padding: 20px; }
+
+/* Savings badge */
+.savings-banner { background: linear-gradient(135deg, #1a0a2e 0%, #0f1a2e 100%); border: 0.5px solid #4c1d95; border-radius: 10px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.savings-banner .label { font-size: 10px; color: #a78bfa; text-transform: uppercase; letter-spacing: 0.5px; }
+.savings-banner .amount { font-size: 22px; font-weight: 700; color: #7c3aed; }
+.savings-banner .sub { font-size: 10px; color: #6b6b8a; }
+
+/* Quick wins */
+.section-title { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 10px; }
+.section-sub { font-size: 10px; color: #6b6b8a; margin-bottom: 12px; }
+.qw-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+.qw-card { background: #131320; border: 0.5px solid #1e1e2e; border-radius: 8px; padding: 10px 12px; }
+.qw-card .service { font-size: 10px; color: #888; margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
+.qw-card .save-amt { font-size: 16px; font-weight: 700; color: #10b981; }
+.qw-card .save-label { font-size: 9px; color: #6b6b8a; }
+.qw-card .cta { margin-top: 8px; background: #1a0a2e; border: 0.5px solid #6d28d9; border-radius: 6px; padding: 4px 8px; font-size: 9px; color: #a78bfa; text-align: center; }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Intent selector */
+.intent-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+.intent-card { background: #131320; border: 0.5px solid #1e1e2e; border-radius: 10px; padding: 14px 12px; cursor: pointer; transition: border-color 0.2s; }
+.intent-card.sel { border-color: #6d28d9; background: #1a0a2e; }
+.intent-card .ic-icon { font-size: 20px; margin-bottom: 6px; }
+.intent-card .ic-label { font-size: 11px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+.intent-card .ic-sub { font-size: 9px; color: #666; }
+.result-feeds { display: none; }
+.result-feeds.visible { display: block; }
+.feed-label { font-size: 10px; color: #a78bfa; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+.feed-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { background: #131320; border: 0.5px solid #2a2a3d; border-radius: 16px; padding: 5px 12px; font-size: 10px; color: #bbb; }
+
+/* Trust cards */
+.trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+.trust-card { background: #131320; border: 0.5px solid #1e1e2e; border-radius: 10px; padding: 12px; }
+.trust-card.featured { border-color: #6d28d9; }
+.tc-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.tc-avatar { width: 32px; height: 32px; border-radius: 50%; background: #2a2a3d; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: #a78bfa; }
+.tc-name { font-size: 11px; font-weight: 600; color: #fff; }
+.tc-active { font-size: 9px; color: #10b981; }
+.tc-price { font-size: 18px; font-weight: 700; color: #fff; }
+.tc-price span { font-size: 10px; color: #666; }
+.trust-score-bar { margin: 8px 0; }
+.ts-label { display: flex; justify-content: space-between; font-size: 9px; color: #888; margin-bottom: 3px; }
+.ts-bar { height: 3px; background: #1e1e2e; border-radius: 2px; }
+.ts-fill { height: 3px; background: #6d28d9; border-radius: 2px; }
+.tc-badge { display: inline-flex; align-items: center; gap: 3px; background: #0f2a1a; border: 0.5px solid #065f46; border-radius: 4px; padding: 2px 6px; font-size: 9px; color: #10b981; margin-top: 6px; }
+.tc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 8px; }
+.tc-stat { font-size: 9px; color: #666; }
+.tc-stat strong { display: block; font-size: 11px; color: #bbb; }
+.join-btn { width: 100%; margin-top: 8px; background: #6d28d9; border: none; border-radius: 6px; padding: 6px; font-size: 10px; color: #fff; cursor: pointer; }
+
+/* Rental */
+.rental-notice { background: #1a0d00; border: 0.5px solid #854f0b; border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; display: flex; align-items: flex-start; gap: 8px; }
+.rental-notice .icon { color: #f59e0b; font-size: 16px; margin-top: 1px; }
+.rental-notice .text { font-size: 10px; color: #d97706; line-height: 1.5; }
+.rental-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.rcat { background: #131320; border: 0.5px solid #1e1e2e; border-radius: 10px; padding: 14px; }
+.rcat .rc-icon { font-size: 22px; margin-bottom: 8px; }
+.rcat .rc-name { font-size: 11px; font-weight: 600; color: #fff; margin-bottom: 3px; }
+.rcat .rc-count { font-size: 9px; color: #6b6b8a; margin-bottom: 8px; }
+.rcat .rc-items { display: flex; flex-wrap: wrap; gap: 4px; }
+.rcat .rc-item { background: #1a1a2e; border-radius: 4px; padding: 3px 7px; font-size: 9px; color: #888; }
+.hidden-cat { background: #1a1a1a; border: 0.5px dashed #333; border-radius: 10px; padding: 14px; opacity: 0.4; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.hidden-cat p { font-size: 10px; color: #555; text-align: center; margin-top: 6px; }
+
+/* Money saved */
+.savings-hero { background: #0d0020; border: 0.5px solid #4c1d95; border-radius: 12px; padding: 20px; margin-bottom: 14px; text-align: center; }
+.savings-hero .hero-label { font-size: 11px; color: #a78bfa; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.savings-hero .hero-amt { font-size: 36px; font-weight: 800; color: #10b981; letter-spacing: -1px; }
+.savings-hero .hero-sub { font-size: 10px; color: #6b6b8a; margin-top: 4px; }
+.savings-inline { display: flex; gap: 8px; margin-bottom: 14px; }
+.si-chip { flex: 1; background: #131320; border-radius: 8px; padding: 10px 12px; border: 0.5px solid #1e1e2e; }
+.si-chip .si-icon { font-size: 16px; margin-bottom: 4px; }
+.si-chip .si-label { font-size: 9px; color: #666; }
+.si-chip .si-val { font-size: 13px; font-weight: 700; color: #10b981; }
+.community-bar { background: #0f1a10; border: 0.5px solid #065f46; border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; }
+.community-bar .cb-label { font-size: 10px; color: #6b9e6b; }
+.community-bar .cb-val { font-size: 14px; font-weight: 700; color: #10b981; }
+.brand-card-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+.bc { background: #131320; border: 0.5px solid #1e1e2e; border-radius: 8px; padding: 8px 10px; }
+.bc .bc-name { font-size: 10px; color: #bbb; margin-bottom: 2px; }
+.bc .bc-save { font-size: 9px; color: #10b981; }
+.bc .bc-avg { font-size: 9px; color: #6b6b8a; }
+
+/* Subspace nav brand */
+.sb-brand { display: flex; align-items: center; gap: 3px; }
+.sb-brand-box { width: 20px; height: 20px; background: #8b5cf6; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+.sb-brand-box svg { width: 12px; height: 12px; fill: white; }
+
+/* annotation */
+.annotation { display: flex; align-items: flex-start; gap: 8px; background: var(--color-background-secondary); border-left: 2px solid #6d28d9; border-radius: 0 6px 6px 0; padding: 8px 12px; margin-top: 12px; }
+.annotation .ann-label { font-size: 10px; color: #a78bfa; font-weight: 600; margin-bottom: 2px; }
+.annotation .ann-text { font-size: 10px; color: var(--color-text-secondary); line-height: 1.5; }
+
+.p1-tag { display: inline-block; background: #1a0a2e; border: 0.5px solid #6d28d9; border-radius: 4px; padding: 1px 6px; font-size: 9px; color: #a78bfa; margin-left: 6px; vertical-align: middle; }
+.p2-tag { display: inline-block; background: #0f1a2e; border: 0.5px solid #1d6fa0; border-radius: 4px; padding: 1px 6px; font-size: 9px; color: #60a5fa; margin-left: 6px; vertical-align: middle; }
+</style>
+
+<h2 class="sr-only">Subspace product redesign mockups for 5 feedback areas</h2>
+
+<div class="nav-tabs" id="tabs">
+  <button class="tab-btn active" onclick="switchTab('f1')">① Cold Start Fix</button>
+  <button class="tab-btn" onclick="switchTab('f2')">② Intent Discovery</button>
+  <button class="tab-btn" onclick="switchTab('f3')">③ Trust Score</button>
+  <button class="tab-btn" onclick="switchTab('f4')">④ Rental Cleanup</button>
+  <button class="tab-btn" onclick="switchTab('f5')">⑤ Savings Everywhere</button>
+</div>
+
+<!-- F1: Cold Start Fix -->
+<div class="screen active" id="f1">
+  <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:12px;">Feedback 1 <span class="p1-tag">P1</span> — New user dashboard with Quick Wins onboarding instead of blank state</div>
+  <div class="sb">
+    <div class="sb-nav">
+      <div class="sb-logo"><div class="sb-brand"><div class="sb-brand-box"><svg viewBox="0 0 12 12"><rect x="1" y="1" width="4" height="4" rx="1"/><rect x="7" y="1" width="4" height="4" rx="1"/><rect x="1" y="7" width="4" height="4" rx="1"/><rect x="7" y="7" width="4" height="4" rx="1"/></svg></div></div>&nbsp;ubSpace</div>
+      <div class="sb-nav-links"><div class="sb-nav-link active">Home</div><div class="sb-nav-link">Explore</div><div class="sb-nav-link">Wallet</div></div>
+      <div class="sb-search"><i class="ti ti-search" aria-hidden="true" style="font-size:11px"></i>Quick search</div>
+    </div>
+    <div class="sb-content">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <div style="width:36px;height:36px;border-radius:50%;background:#1e1e2e;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#a78bfa;">U</div>
+        <div><div style="font-size:11px;color:#666;">Welcome back</div><div style="font-size:15px;font-weight:700;color:#fff;">User</div></div>
+      </div>
+
+      <div class="savings-banner">
+        <div>
+          <div class="label">Your potential savings</div>
+          <div class="amount">₹510<span style="font-size:13px;color:#a78bfa">/month</span></div>
+          <div class="sub">Based on popular subscriptions in Chennai</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:9px;color:#a78bfa;margin-bottom:4px;">3 services</div>
+          <div style="background:#6d28d9;border-radius:6px;padding:5px 10px;font-size:10px;color:#fff;cursor:pointer;">See how →</div>
+        </div>
+      </div>
+
+      <div class="section-title">Quick Wins <span style="font-size:10px;color:#6b6b8a;font-weight:400">— Save money today</span></div>
+      <div class="section-sub">Join a shared plan and start saving immediately</div>
+      <div class="qw-grid">
+        <div class="qw-card">
+          <div class="service"><div class="dot" style="background:#ff0000;"></div>Netflix</div>
+          <div class="save-amt">₹350</div>
+          <div class="save-label">saved/month</div>
+          <div style="font-size:9px;color:#888;margin-top:3px;">23+ groups available</div>
+          <div class="cta">Join group →</div>
+        </div>
+        <div class="qw-card">
+          <div class="service"><div class="dot" style="background:#1db954;"></div>Spotify</div>
+          <div class="save-amt">₹60</div>
+          <div class="save-label">saved/month</div>
+          <div style="font-size:9px;color:#888;margin-top:3px;">15+ groups available</div>
+          <div class="cta">Join group →</div>
+        </div>
+        <div class="qw-card">
+          <div class="service"><div class="dot" style="background:#00a8e1;"></div>Prime</div>
+          <div class="save-amt">₹100</div>
+          <div class="save-label">saved/month</div>
+          <div style="font-size:9px;color:#888;margin-top:3px;">35+ groups available</div>
+          <div class="cta">Join group →</div>
+        </div>
+      </div>
+
+      <div style="background:#131320;border:0.5px solid #1e1e2e;border-radius:8px;padding:12px;display:flex;align-items:center;justify-content:space-between;">
+        <div style="font-size:11px;color:#888;">Your Subscriptions</div>
+        <div style="font-size:10px;color:#6d28d9;cursor:pointer;">Add first subscription →</div>
+      </div>
+    </div>
+  </div>
+  <div class="annotation">
+    <div><div class="ann-label">Change made</div><div class="ann-text">Replaced the empty "No Active Subscriptions" blank state with a <strong>Potential Savings Calculator</strong> and <strong>Quick Wins</strong> grid. The product now shows value before asking for effort — projected savings from Netflix/Spotify/Prime are shown contextually for the user's city.</div></div>
+  </div>
+</div>
+
+<!-- F2: Intent Discovery -->
+<div class="screen" id="f2">
+  <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:12px;">Feedback 2 <span class="p1-tag">P1</span> — Onboarding-based navigation via intent selection, reducing decision fatigue</div>
+  <div class="sb">
+    <div class="sb-nav">
+      <div class="sb-logo"><div class="sb-brand"><div class="sb-brand-box"><svg viewBox="0 0 12 12"><rect x="1" y="1" width="4" height="4" rx="1"/><rect x="7" y="1" width="4" height="4" rx="1"/><rect x="1" y="7" width="4" height="4" rx="1"/><rect x="7" y="7" width="4" height="4" rx="1"/></svg></div></div>&nbsp;ubSpace</div>
+      <div class="sb-nav-links"><div class="sb-nav-link">Home</div><div class="sb-nav-link active">Explore</div><div class="sb-nav-link">Wallet</div></div>
+      <div class="sb-search"><i class="ti ti-search" aria-hidden="true" style="font-size:11px"></i>Quick search</div>
+    </div>
+    <div class="sb-content">
+      <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:4px;">What are you looking for?</div>
+      <div style="font-size:10px;color:#6b6b8a;margin-bottom:16px;">We'll personalise your experience based on your goal</div>
+
+      <div class="intent-grid">
+        <div class="intent-card sel" id="ic1" onclick="selectIntent(1)">
+          <div class="ic-icon">💸</div>
+          <div class="ic-label">Cheaper subscriptions</div>
+          <div class="ic-sub">Share & split costs</div>
+        </div>
+        <div class="intent-card" id="ic2" onclick="selectIntent(2)">
+          <div class="ic-icon">🏷️</div>
+          <div class="ic-label">Discounts & deals</div>
+          <div class="ic-sub">Gift cards, coupons</div>
+        </div>
+        <div class="intent-card" id="ic3" onclick="selectIntent(3)">
+          <div class="ic-icon">💰</div>
+          <div class="ic-label">Earn money</div>
+          <div class="ic-sub">Share & rent out</div>
+        </div>
+      </div>
+
+      <div class="result-feeds visible" id="rf">
+        <div class="feed-label" id="rf-label">Recommended for cheaper subscriptions</div>
+        <div class="feed-chips" id="rf-chips">
+          <span class="chip">📺 Shared OTT plans</span>
+          <span class="chip">🎵 Music sharing</span>
+          <span class="chip">🎮 Gaming subscriptions</span>
+          <span class="chip">☁️ Cloud storage</span>
+          <span class="chip">📰 News & magazines</span>
+        </div>
+        <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;" id="rf-cards">
+          <div style="background:#131320;border:0.5px solid #6d28d9;border-radius:8px;padding:10px;text-align:center;">
+            <div style="font-size:13px;font-weight:700;color:#fff;">₹99</div>
+            <div style="font-size:9px;color:#888;">YouTube Premium</div>
+            <div style="font-size:9px;color:#10b981;margin-top:2px;">23+ groups</div>
+          </div>
+          <div style="background:#131320;border:0.5px solid #1e1e2e;border-radius:8px;padding:10px;text-align:center;">
+            <div style="font-size:13px;font-weight:700;color:#fff;">₹250</div>
+            <div style="font-size:9px;color:#888;">Netflix Standard</div>
+            <div style="font-size:9px;color:#10b981;margin-top:2px;">15+ groups</div>
+          </div>
+          <div style="background:#131320;border:0.5px solid #1e1e2e;border-radius:8px;padding:10px;text-align:center;">
+            <div style="font-size:13px;font-weight:700;color:#fff;">₹100</div>
+            <div style="font-size:9px;color:#888;">JioHotstar</div>
+            <div style="font-size:9px;color:#10b981;margin-top:2px;">42+ groups</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="annotation">
+    <div><div class="ann-label">Change made</div><div class="ann-text">Added a 3-way <strong>intent selector</strong> at the top of Explore. Choosing "Cheaper subscriptions" surfaces OTT sharing; "Discounts" surfaces gift cards and coupons; "Earn money" surfaces rental and sharing opportunities. Eliminates the current problem where all four product lines compete for attention simultaneously.</div></div>
+  </div>
+</div>
+
+<!-- F3: Trust Score -->
+<div class="screen" id="f3">
+  <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:12px;">Feedback 3 <span class="p1-tag">P1</span> — Trust Score on sharer profiles to drive conversion in subscription sharing</div>
+  <div class="sb">
+    <div class="sb-nav">
+      <div class="sb-logo"><div class="sb-brand"><div class="sb-brand-box"><svg viewBox="0 0 12 12"><rect x="1" y="1" width="4" height="4" rx="1"/><rect x="7" y="1" width="4" height="4" rx="1"/><rect x="1" y="7" width="4" height="4" rx="1"/><rect x="7" y="7" width="4" height="4" rx="1"/></svg></div></div>&nbsp;ubSpace</div>
+      <div class="sb-nav-links"><div class="sb-nav-link">Home</div><div class="sb-nav-link active">Explore</div><div class="sb-nav-link">Wallet</div></div>
+    </div>
+    <div class="sb-content">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+        <div style="width:24px;height:24px;background:#ff0000;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:700;">▶</div>
+        <div style="font-size:14px;font-weight:700;color:#fff;">Youtube Premium — Monthly Plan</div>
+      </div>
+
+      <div style="background:#0f1a10;border:0.5px solid #065f46;border-radius:8px;padding:8px 12px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;">
+        <div style="font-size:10px;color:#6b9e6b;">Community saved this month</div>
+        <div style="font-size:14px;font-weight:700;color:#10b981;">₹2.4 Lakhs</div>
+      </div>
+
+      <div class="trust-grid">
+        <div class="trust-card featured">
+          <div class="tc-header">
+            <div class="tc-avatar">YK</div>
+            <div>
+              <div class="tc-name">Yogesh K. Saini</div>
+              <div class="tc-active">● Active now</div>
+            </div>
+            <div style="margin-left:auto;font-size:10px;color:#f59e0b;">★ 5.0</div>
+          </div>
+          <div class="tc-price">₹99 <span>/device/month</span></div>
+          <div class="trust-score-bar">
+            <div class="ts-label"><span>Trust Score</span><span style="color:#a78bfa;font-weight:600;">94 / 100</span></div>
+            <div class="ts-bar"><div class="ts-fill" style="width:94%"></div></div>
+          </div>
+          <div class="tc-stats">
+            <div class="tc-stat"><strong>45</strong>Renewals</div>
+            <div class="tc-stat"><strong>98%</strong>Success rate</div>
+            <div class="tc-stat"><strong>&lt;2 min</strong>Response</div>
+            <div class="tc-stat"><strong>KYC ✓</strong>Verified</div>
+          </div>
+          <div class="tc-badge"><i class="ti ti-shield-check" aria-hidden="true" style="font-size:10px"></i>Trusted Sharer · ₹18k saved</div>
+          <button class="join-btn">Join Group</button>
+        </div>
+
+        <div class="trust-card">
+          <div class="tc-header">
+            <div class="tc-avatar" style="background:#1a2a1a;color:#10b981;">V</div>
+            <div>
+              <div class="tc-name">Vidhya</div>
+              <div class="tc-active">● Active now</div>
+            </div>
+            <div style="margin-left:auto;font-size:10px;color:#f59e0b;">★ 5.0</div>
+          </div>
+          <div class="tc-price">₹99 <span>/device/month</span></div>
+          <div class="trust-score-bar">
+            <div class="ts-label"><span>Trust Score</span><span style="color:#a78bfa;font-weight:600;">88 / 100</span></div>
+            <div class="ts-bar"><div class="ts-fill" style="width:88%"></div></div>
+          </div>
+          <div class="tc-stats">
+            <div class="tc-stat"><strong>31</strong>Renewals</div>
+            <div class="tc-stat"><strong>96%</strong>Success rate</div>
+            <div class="tc-stat"><strong>&lt;5 min</strong>Response</div>
+            <div class="tc-stat"><strong>KYC ✓</strong>Verified</div>
+          </div>
+          <div class="tc-badge"><i class="ti ti-shield-check" aria-hidden="true" style="font-size:10px"></i>Trusted Sharer</div>
+          <button class="join-btn" style="background:#1e1e2e;">Join Group</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="annotation">
+    <div><div class="ann-label">Change made</div><div class="ann-text">Added a <strong>Trust Score (0–100)</strong> to every sharer card, composed of renewals completed, success rate, response time, and KYC status. A "Trusted Sharer" badge and community savings figure (₹2.4L) surface social proof at the point of decision — the moment trust matters most.</div></div>
+  </div>
+</div>
+
+<!-- F4: Rental Cleanup -->
+<div class="screen" id="f4">
+  <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:12px;">Feedback 4 <span class="p2-tag">P2</span> — Rental marketplace refocused on categories with real supply; broken listings hidden</div>
+  <div class="sb">
+    <div class="sb-nav">
+      <div class="sb-logo"><div class="sb-brand"><div class="sb-brand-box"><svg viewBox="0 0 12 12"><rect x="1" y="1" width="4" height="4" rx="1"/><rect x="7" y="1" width="4" height="4" rx="1"/><rect x="1" y="7" width="4" height="4" rx="1"/><rect x="7" y="7" width="4" height="4" rx="1"/></svg></div></div>&nbsp;ubSpace</div>
+      <div class="sb-nav-links"><div class="sb-nav-link">Home</div><div class="sb-nav-link active">Explore</div></div>
+    </div>
+    <div class="sb-content">
+      <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:4px;">Subspace Minutes — Rentals</div>
+
+      <div class="rental-notice">
+        <i class="ti ti-info-circle icon" aria-hidden="true"></i>
+        <div class="text">Some categories are still being set up. We're showing you the most active ones first. <span style="color:#f59e0b;text-decoration:underline;cursor:pointer;">Suggest a category →</span></div>
+      </div>
+
+      <div class="rental-cats">
+        <div class="rcat">
+          <div class="rc-icon">📚</div>
+          <div class="rc-name">Professional Courses</div>
+          <div class="rc-count">12+ items available</div>
+          <div class="rc-items"><span class="rc-item">KodeKloud</span><span class="rc-item">Udemy</span><span class="rc-item">+3</span></div>
+        </div>
+        <div class="rcat">
+          <div class="rc-icon">🛠️</div>
+          <div class="rc-name">Creator Tools</div>
+          <div class="rc-count">8+ items available</div>
+          <div class="rc-items"><span class="rc-item">Canva Pro</span><span class="rc-item">Adobe</span><span class="rc-item">+2</span></div>
+        </div>
+        <div class="rcat">
+          <div class="rc-icon">⚡</div>
+          <div class="rc-name">Productivity</div>
+          <div class="rc-count">5+ items available</div>
+          <div class="rc-items"><span class="rc-item">Notion</span><span class="rc-item">Grammarly</span></div>
+        </div>
+        <div class="hidden-cat">
+          <i class="ti ti-lock" aria-hidden="true" style="font-size:22px;color:#444;"></i>
+          <p>Wellness & Fitness<br>Coming soon — supply being built</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="annotation">
+    <div><div class="ann-label">Change made</div><div class="ann-text">Replaced the broken "Monthly Yoga Classes / Ayurvedic Wellness Kit" listings (with missing images) with supply-matched categories: Professional Courses, Creator Tools, Productivity. Low-supply categories like Wellness are shown as "Coming soon" locked tiles — honest without damaging trust. A transparent info banner explains the curation.</div></div>
+  </div>
+</div>
+
+<!-- F5: Savings Everywhere -->
+<div class="screen" id="f5">
+  <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:12px;">Feedback 5 <span class="p1-tag">P1</span> — "Money Saved" surface moved from profile sidebar to persistent hero across all screens</div>
+  <div class="sb">
+    <div class="sb-nav">
+      <div class="sb-logo"><div class="sb-brand"><div class="sb-brand-box"><svg viewBox="0 0 12 12"><rect x="1" y="1" width="4" height="4" rx="1"/><rect x="7" y="1" width="4" height="4" rx="1"/><rect x="1" y="7" width="4" height="4" rx="1"/><rect x="7" y="7" width="4" height="4" rx="1"/></svg></div></div>&nbsp;ubSpace</div>
+      <div class="sb-nav-links"><div class="sb-nav-link active">Home</div><div class="sb-nav-link">Explore</div><div class="sb-nav-link">Wallet</div></div>
+      <div style="margin-left:auto;background:#0f2a1a;border:0.5px solid #065f46;border-radius:20px;padding:4px 12px;font-size:10px;color:#10b981;display:flex;align-items:center;gap:4px;">
+        <i class="ti ti-coin" aria-hidden="true" style="font-size:11px"></i>
+        You saved ₹1,284 this month
+      </div>
+    </div>
+    <div class="sb-content">
+      <div class="savings-hero">
+        <div class="hero-label">Total savings through Subspace</div>
+        <div class="hero-amt">₹1,284</div>
+        <div class="hero-sub">+₹350 from last month · 3 active subscriptions</div>
+      </div>
+
+      <div class="savings-inline">
+        <div class="si-chip">
+          <div class="si-icon">👥</div>
+          <div class="si-label">Sharing savings</div>
+          <div class="si-val">₹510</div>
+        </div>
+        <div class="si-chip">
+          <div class="si-icon">🏷️</div>
+          <div class="si-label">Purchase savings</div>
+          <div class="si-val">₹774</div>
+        </div>
+        <div class="si-chip">
+          <div class="si-icon">🌀</div>
+          <div class="si-label">Paid via Subspace</div>
+          <div class="si-val">₹0</div>
+        </div>
+      </div>
+
+      <div class="community-bar">
+        <div class="cb-label">Community saved this month</div>
+        <div class="cb-val">₹24 Lakhs</div>
+      </div>
+
+      <div class="section-title" style="margin-bottom:8px;">Average savings per brand</div>
+      <div class="brand-card-grid">
+        <div class="bc"><div class="bc-name">Netflix</div><div class="bc-save">₹350/mo</div><div class="bc-avg">avg user saves</div></div>
+        <div class="bc"><div class="bc-name">Zomato</div><div class="bc-save">₹220/mo</div><div class="bc-avg">avg user saves</div></div>
+        <div class="bc"><div class="bc-name">Spotify</div><div class="bc-save">₹60/mo</div><div class="bc-avg">avg user saves</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="annotation">
+    <div><div class="ann-label">Change made</div><div class="ann-text">Moved the "You Saved" metric from a buried profile sidebar into three places simultaneously: (1) a persistent green pill in the top navbar on every page, (2) a hero card at the top of Home, and (3) per-brand average savings on brand pages. Savings is now the emotional anchor of every session, not a hidden stat.</div></div>
+  </div>
+</div>
+
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+const intentData = {
+  1: {
+    label: 'Recommended for cheaper subscriptions',
+    chips: ['📺 Shared OTT plans','🎵 Music sharing','🎮 Gaming','☁️ Cloud storage','📰 News'],
+    cards: [['₹99','YouTube Premium','23+ groups'],['₹250','Netflix Standard','15+ groups'],['₹100','JioHotstar','42+ groups']]
+  },
+  2: {
+    label: 'Recommended for discounts & deals',
+    chips: ['🎁 Gift cards','✂️ Coupons','🏷️ Cashback offers','🛒 Shopping deals'],
+    cards: [['6% OFF','Zomato GC','Food'],['48% OFF','Sony LIV','OTT'],['10.5% OFF','Pizza Hut','Food']]
+  },
+  3: {
+    label: 'Recommended for earning money',
+    chips: ['💳 Share subscriptions','🔑 Rent tools','📦 List products','👥 Refer friends'],
+    cards: [['₹297/mo','Host YT Premium','3 slots'],['₹900/yr','Spotify Duo','1 slot'],['Custom','KodeKloud courses','Rental']]
+  }
+};
+
+function selectIntent(n) {
+  [1,2,3].forEach(i => {
+    document.getElementById('ic'+i).classList.toggle('sel', i===n);
+  });
+  const d = intentData[n];
+  document.getElementById('rf-label').textContent = d.label;
+  document.getElementById('rf-chips').innerHTML = d.chips.map(c=>`<span class="chip">${c}</span>`).join('');
+  document.getElementById('rf-cards').innerHTML = d.cards.map((c,i)=>`<div style="background:#131320;border:0.5px solid ${i===0?'#6d28d9':'#1e1e2e'};border-radius:8px;padding:10px;text-align:center;"><div style="font-size:13px;font-weight:700;color:#fff;">${c[0]}</div><div style="font-size:9px;color:#888;">${c[1]}</div><div style="font-size:9px;color:#10b981;margin-top:2px;">${c[2]}</div></div>`).join('');
+  document.getElementById('rf').classList.add('visible');
+}
+</script>
+
+</body>
+</html>
