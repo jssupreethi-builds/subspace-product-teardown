@@ -39,11 +39,11 @@ Screenshots captured during product exploration and evaluation.
 
 | Priority | Recommendation |
 |-----------|---------------|
-P1	Cold start onboarding fix
-P1	Intent-based discovery
-P1	Trust Score on sharers
-P1	Surface savings everywhere
-P2	Refocus rental marketplace
+P1 |	Cold start onboarding fix
+P1 |	Intent-based discovery
+P1 |	Trust Score on sharers
+P1 |	Surface savings everywhere
+P2 |	Refocus rental marketplace
 
 
 ## Product Thinking Approach
